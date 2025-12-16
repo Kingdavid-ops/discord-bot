@@ -1,6 +1,3 @@
-if (!process.env.BOT_TOKEN) {
-  throw new Error("BOT_TOKEN is missing in environment variables");
-}
 require("dotenv").config();
 const fs = require("fs");
 const path = require("path");
@@ -150,6 +147,12 @@ client.on(Events.InteractionCreate, async (interaction) => {
         ephemeral: true,
       });
     }
+  }
+});
+client.on("messageCreate", async (message) => {
+  if (message.author.bot) return;
+  if (message.content === "hello") {
+    message.reply("Hello there!");
   }
 });
 client.login(process.env.BOT_TOKEN);
