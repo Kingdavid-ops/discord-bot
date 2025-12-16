@@ -17,10 +17,10 @@ const deployComands = async () => {
   try {
     const comands = [];
     const commandsFiles = fs
-      .readdirSync(path.join(__dirname, "comands"))
+      .readdirSync(path.join(__dirname, "commands"))
       .filter((file) => file.endsWith(".js"));
     for (const file of commandsFiles) {
-      const comand = require(`./comands/${file}`);
+      const comand = require(`./commands/${file}`);
 
       if ("data" in comand && "execute" in comand) {
         comands.push(comand.data.toJSON());
@@ -65,7 +65,7 @@ const client = new Client({
 
 client.comands = new Collection();
 
-const comandsPath = path.join(__dirname, "comands");
+const comandsPath = path.join(__dirname, "commands");
 const comandsFiles = fs
   .readdirSync(comandsPath)
   .filter((file) => file.endsWith(".js"));
