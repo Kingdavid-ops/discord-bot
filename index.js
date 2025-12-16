@@ -1,6 +1,3 @@
-console.log("BOT_TOKEN:", process.env.BOT_TOKEN);
-console.log("BOT_TOKEN type:", typeof process.env.BOT_TOKEN);
-
 if (!process.env.BOT_TOKEN) {
   throw new Error("BOT_TOKEN is missing in environment variables");
 }
